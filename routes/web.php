@@ -19,3 +19,5 @@ Route::get('/', 'UserController@lista');
 Route::get('/form','UserController@userform');
 //Guardar Usuarios
 Route::post('/save','UserController@save')->name('save');
+//Eliminar Usuarios
+Route::delete('/delete/{id}','UserController@delete')->name('delete');
