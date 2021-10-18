@@ -26,9 +26,11 @@
                         <td>{{$user->nombre}}</td>
                         <td>{{$user->email}}</td>
                         <td>
+                            <a href="{{route('editform', $user->id)}}" class="btn btn-primary mb-2">
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
                             <form action="{{ route('delete', $user->id) }}" method="POST">
                                 @csrf @method('DELETE')
-
                                 <button type="submit" onclick="return confirm('¿Esta seguro de Eliminar Usurio Permanentemente?')" class="btn btn-danger">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>

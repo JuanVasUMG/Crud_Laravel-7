@@ -9,7 +9,6 @@
                  {{ session('usuarioGuardado') }}
              </div>
          @endif
-g
         <!-- Validacion Errores-->
         @if($errors->any())
             <div class="alert alert-danger">
