@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Usuario;
 use Illuminate\Http\Request;
 
-class UserController extends Controller{
+class UserController extends Controller
+{
 
-    //Listado de los Usuarios
-    public function list(){
-        $data['users'] = Usuario::paginate(5);
+    //Lisatdo de Usuarios
+    public function lista(){
+        $data['users'] = Usuario::paginate(3);
 
-        return view('usuarios.list', $data);
+        return view('usuarios.listar', $data);
     }
 
     //Formulario de Usuario

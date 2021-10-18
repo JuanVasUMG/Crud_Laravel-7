@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 //Listado de Usuarios
-Route::get('/','UserController@list');
+Route::get('/', 'UserController@lista');
 //Formulario de Usuarios
 Route::get('/form','UserController@userform');
 //Guardar Usuarios
