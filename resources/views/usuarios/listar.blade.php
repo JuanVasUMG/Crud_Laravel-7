@@ -1,9 +1,14 @@
+<!-- heredando de la plantilla base -->
 @extends('layouts.base')
+
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <h2 class="text-center mb-5">Usuarios Registrados</h2>
-            <a class="btn btn-success mb-4" href="{{url('/form')}}">Agregar usuario</a>
+            <h2 class="text-center mb-3">Usuarios Registrados</h2>
+
+            <!-- Boton de registro -->
+            <a class="btn btn-outline-success mb-3" href="{{url('/form')}}">Agregar usuario</a>
+
             <!-- Mensaje Flash -->
             @if(session('usuarioEliminado'))
                 <div class="alert alert-success">
@@ -11,30 +16,35 @@
                 </div>
             @endif
 
-            <table class="table table-bordered table-striped text-center">
-                <thead>
+            <table class="table table-bordered table-hover text-center">
+                <thead class="thead-dark">
                 <tr>
                     <th>Nombre</th>
                     <th>Email</th>
+                    <th>Rol</th>
                     <th>Acciones</th>
                 </tr>
                 </thead>
 
-                <tbody>
+                <tbody class="">
                 @foreach($users as $user)
                     <tr>
                         <td>{{$user->nombre}}</td>
                         <td>{{$user->email}}</td>
+                        <td>{{$user->descripcion}}</td>
                         <td>
-                            <a href="{{route('editform', $user->id)}}" class="btn btn-primary mb-2">
-                                <i class="fas fa-pencil-alt"></i>
-                            </a>
-                            <form action="{{ route('delete', $user->id) }}" method="POST">
-                                @csrf @method('DELETE')
-                                <button type="submit" onclick="return confirm('¿Esta seguro de Eliminar Usurio Permanentemente?')" class="btn btn-danger">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </form>
+                            <div class="btn-group">
+                                <a href="{{route('editform', $user->id)}}">
+                                    <i class="fas fa-pencil-alt btn btn-outline-primary mr-2"></i>
+                                </a>
+
+                                <form action="{{ route('delete', $user->id) }}" method="POST">
+                                    @csrf @method('DELETE')
+                                    <button type="submit" onclick="return confirm('¿Esta seguro de Eliminar Usurio Permanentemente?')" class="btn btn-outline-danger">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
@@ -42,6 +52,7 @@
                 </tbody>
 
             </table>
+            <!-- Paginacion -->
             {{ $users->links() }}
 
         </div>

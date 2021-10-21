@@ -23,7 +23,7 @@
             <div class="card">
                 <form action="{{ url ('save') }}" method="POST">
                 @csrf
-                    <div class="card-header text-center">AGREGAR USUARIO</div>
+                    <div class="card-header text-center text-white bg-dark">AGREGAR USUARIO</div>
 
                     <div class="card-body">
                         <div class="row form-group">
@@ -37,7 +37,18 @@
                         </div>
 
                         <div class="row form-group">
-                            <button type="submit" class="btn btn-success col-md-9 offset-2">Guardar Datos</button>
+                            <label for="" class="col-2">Rol</label>
+                            <select name="rol" class="form-control col-md-9" >
+                                <option value="">--Seleccione--</option>
+
+                                @foreach( $rol as $roles)
+                                    <option value="{{$roles->id_rol}}"> {{$roles->descripcion}}  </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="row form-group">
+                            <button type="submit" class="btn btn-outline-success col-md-9 offset-2">Guardar Datos</button>
 
                         </div>
 
@@ -50,6 +61,6 @@
 
     </div>
 
-    <a class="btn btn-ligth btn-xs mt-5" href=" {{ url('/') }}">&laquo volver</a>
+    <a class="btn btn-outline-info btn-xs mt-5" href=" {{ url('/') }}">&laquo volver</a>
 
 </div>

@@ -17,6 +17,8 @@ class CreateUsuariosTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->string('email');
+            $table->unsignedBigInteger('id_rol');
+            $table->foreign('rol_id')->references('id_rol')->on('rol');
             $table->timestamps();
         });
     }
