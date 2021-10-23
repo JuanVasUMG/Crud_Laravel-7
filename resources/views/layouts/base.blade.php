@@ -14,10 +14,22 @@
     <!-- Font-Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 
-    <title>Crud Laravel</title>
+    <title>Crud Laravel - @yield('title')</title>
 </head>
 <body>
     <!-- Crea una NavBar -->
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="{{ url('/') }}">
+            <img src="https://umg.edu.gt/assets/umg.png" height="30" class="d-inline-block align-top" alt="Logo UMG">
+
+            Usuarios
+        </a>
+    </nav>
+
+    <!-- Archivos Blade -->
+    <div class="container">
+        @yield('content')
+    </div>
 
 </body>
 </html>

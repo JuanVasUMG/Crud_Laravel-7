@@ -1,14 +1,18 @@
 @extends('layouts.base')
 
+@section('title', 'User Create')
+
+@section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-7 mt-5">
         <!-- Mensaje Flash -->
-         @if(session('usuarioGuardado'))
-             <div class="alert alert-success">
-                 {{ session('usuarioGuardado') }}
-             </div>
-         @endif
+            @if(session('usuarioGuardado'))
+                <div class="alert alert-success">
+                    {{ session('usuarioGuardado') }}
+                </div>
+            @endif
+
         <!-- Validacion Errores-->
         @if($errors->any())
             <div class="alert alert-danger">
@@ -48,7 +52,7 @@
                         </div>
 
                         <div class="row form-group">
-                            <button type="submit" class="btn btn-outline-success col-md-9 offset-2">Guardar Datos</button>
+                            <button type="submit" class="btn btn-outline-success col-md-9 offset-2" >Guardar Datos</button>
 
                         </div>
 
@@ -64,3 +68,4 @@
     <a class="btn btn-outline-info btn-xs mt-5" href=" {{ url('/') }}">&laquo volver</a>
 
 </div>
+@endsection

@@ -1,10 +1,13 @@
 <!-- heredando de la plantilla base -->
 @extends('layouts.base')
 
+@section('title', 'User List')
+
+@section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <h2 class="text-center mb-3">Usuarios Registrados</h2>
+            <h2 class="text-center mb-1">Usuarios Registrados</h2>
 
             <!-- Boton de registro -->
             <a class="btn btn-outline-success mb-3" href="{{url('/form')}}">Agregar usuario</a>
@@ -35,12 +38,12 @@
                         <td>
                             <div class="btn-group">
                                 <a href="{{route('editform', $user->id)}}">
-                                    <i class="fas fa-pencil-alt btn btn-outline-primary mr-2"></i>
+                                    <i class="fas fa-pencil-alt btn btn-outline-primary mb-2 mr-2"></i>
                                 </a>
 
                                 <form action="{{ route('delete', $user->id) }}" method="POST">
                                     @csrf @method('DELETE')
-                                    <button type="submit" onclick="return confirm('¿Esta seguro de Eliminar Usurio Permanentemente?')" class="btn btn-outline-danger">
+                                    <button type="submit" onclick="return confirm('¿Esta seguro de Eliminar Usurio Permanentemente?')" class="btn btn-outline-danger btn-sm">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </form>
@@ -58,3 +61,5 @@
         </div>
     </div>
 </div>
+@endsection
+

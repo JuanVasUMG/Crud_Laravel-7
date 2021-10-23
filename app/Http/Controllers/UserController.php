@@ -13,8 +13,8 @@ class UserController extends Controller
     //Lisatdo de Usuarios
     public function lista(){
 
-
         $users = DB::table('usuarios')
+            // Toma de referencial el rol_id de usuairos para traer descripcion de rol
             ->join('rol', 'usuarios.rol_id', '=', 'rol.id_rol')
             ->select('usuarios.*', 'rol.descripcion')
             ->paginate(5);
@@ -37,7 +37,7 @@ class UserController extends Controller
         $validator = $this->validate($request, [
             'nombre'=> 'required|string|max:75',
             'email'=> 'required|string|max:45|email|unique:usuarios',
-            'rol'=> 'required|string'
+            'rol'=> 'required'
         ]);
 
         /* Guardamos en la Base de datos */
@@ -60,8 +60,10 @@ class UserController extends Controller
     //Formulario Editar Usuarios
     public function editform($id){
         $usuario = Usuario::findOrFail($id);
+        $rol=Rol::all();
 
-        return view('usuarios.editform', compact('usuario'));
+
+        return view('usuarios.editform', compact('usuario', 'rol'));
     }
 
     //Edicion de Usuarios
