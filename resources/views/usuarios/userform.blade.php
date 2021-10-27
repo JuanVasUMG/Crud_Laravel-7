@@ -25,7 +25,7 @@
         @endif
 
             <div class="card">
-                <form action="{{ url ('save') }}" method="POST">
+                <form action="{{ url ('save') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                     <div class="card-header text-center text-white bg-dark">AGREGAR USUARIO</div>
 
@@ -38,6 +38,11 @@
                         <div class="row form-group">
                             <label for="" class="col-2">Email</label>
                             <input type="text" name="email" class="form-control col-md-9">
+                        </div>
+
+                        <div class="row form-group">
+                            <label for="" class="col-2">Foto</label>
+                            <input type="file" name="foto" class="col-md-9">
                         </div>
 
                         <div class="row form-group">

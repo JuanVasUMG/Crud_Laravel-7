@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Rol;
 use App\Usuario;
 use Illuminate\Http\Request;
@@ -37,13 +38,20 @@ class UserController extends Controller
         $validator = $this->validate($request, [
             'nombre'=> 'required|string|max:75',
             'email'=> 'required|string|max:45|email|unique:usuarios',
+            'foto' => 'required|',
             'rol'=> 'required'
         ]);
+
+        /*Recolecion de la foto de Usuario*/
+        if($request->hasFile('foto')){
+            $validator['foto'] = $request-> file('foto')->store('uploads','public');
+        }
 
         /* Guardamos en la Base de datos */
         Usuario::create([
             'nombre'=>$validator['nombre'],
             'email'=>$validator['email'],
+            'foto' =>$validator['foto'],
             'rol_id'=>$validator['rol']
         ]);
 
@@ -61,7 +69,6 @@ class UserController extends Controller
     public function editform($id){
         $usuario = Usuario::findOrFail($id);
         $rol=Rol::all();
-
 
         return view('usuarios.editform', compact('usuario', 'rol'));
     }
