@@ -22,6 +22,7 @@
             <table class="table table-bordered table-hover text-center">
                 <thead class="thead-dark">
                 <tr>
+                    <th>Foto</th>
                     <th>Nombre</th>
                     <th>Email</th>
                     <th>Rol</th>
@@ -32,6 +33,9 @@
                 <tbody class="">
                 @foreach($users as $user)
                     <tr>
+                        <td>
+                            <img src="{{ asset('storage').'/'.$user->foto}}" alt="" height="50">
+                        </td>
                         <td>{{$user->nombre}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->descripcion}}</td>
