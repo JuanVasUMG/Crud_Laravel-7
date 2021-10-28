@@ -34,7 +34,7 @@
                 @foreach($users as $user)
                     <tr>
                         <td>
-                            <img src="{{ asset('storage').'/'.$user->foto}}" alt="" height="50">
+                            <img src="{{ asset('storage').'/'.$user->foto}}" alt="" height="80">
                         </td>
                         <td>{{$user->nombre}}</td>
                         <td>{{$user->email}}</td>

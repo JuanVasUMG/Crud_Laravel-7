@@ -12,6 +12,7 @@
                         {{session("usuarioModificado")}}
                     </div>
                 @endif
+
             <!--Validacion de errores-->
                 @if($errors->any())
                     <div class="alert alert-danger">
@@ -24,7 +25,7 @@
                 @endif
 
                 <div class="card">
-                    <form action="{{ route('edit', $usuario->id)}}" method="POST">
+                    <form action="{{ route('edit', $usuario->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf @method('PATCH')
                         <div class="card-header text-center text-white bg-dark">MODIFICAR USUARIO</div>
 
@@ -38,6 +39,13 @@
                                 <label for="" class="col-2">Email</label>
                                 <input type="text" name="email" class="form-control col-md-9" value="{{ $usuario->email }}">
                             </div>
+
+                            <div class="row form-group">
+                                <label for="" class="col-2">Foto</label>
+                                <img src="{{ asset('storage').'/'.$usuario->foto}}" alt="" height="80" width="auto">
+                                <input type="file" name="foto" class="col-md-6">
+                            </div>
+
 
                             <div class="row form-group">
                                 <label for="" class="col-2">Rol</label>
