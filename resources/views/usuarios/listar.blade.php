@@ -4,7 +4,7 @@
 @section('title', 'User List')
 
 @section('content')
-<div class="container mt-5">
+<div class="container mt-3">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <h2 class="text-center mb-1">Usuarios Registrados</h2>
@@ -14,13 +14,13 @@
 
             <!-- Mensaje Flash -->
             @if(session('usuarioEliminado'))
-                <div class="alert alert-success">
+                <div class="alert alert-danger">
                     {{session('usuarioEliminado')}}
                 </div>
             @endif
 
             <table class="table table-bordered table-hover text-center">
-                <thead class="thead-dark">
+                <thead class="bg-info">
                 <tr>
                     <th>Foto</th>
                     <th>Nombre</th>

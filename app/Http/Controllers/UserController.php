@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
+
 class UserController extends Controller
 {
 
@@ -61,7 +62,11 @@ class UserController extends Controller
 
     //Eliminar Usuarios
     public function delete($id){
-        Usuario::destroy($id);
+
+        $usuario = Usuario::findOrFail($id);
+        if(Storage::delete('public/'.$usuario->foto)){
+            Usuario::destroy($id);
+        }
 
         return back()->with('usuarioEliminado', 'Usuario Eliminado');
     }

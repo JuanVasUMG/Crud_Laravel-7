@@ -3,7 +3,7 @@
 @section('title', 'User Update')
 
 @section('content')
-    <div class="container mt-5">
+    <div class="container mt-2">
         <div class="row justify-content-center">
             <div class="col-md-7 mt-5">
                 <!--Mensaje flash-->
@@ -27,7 +27,11 @@
                 <div class="card">
                     <form action="{{ route('edit', $usuario->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf @method('PATCH')
-                        <div class="card-header text-center text-white bg-dark">MODIFICAR USUARIO</div>
+                        <div class="card-header text-center text-white bg-info">
+                            <img src="{{ asset('storage').'/'.$usuario->foto}}" alt="" height="80" style="border-radius: 50%">
+                            <h4>MODIFICAR USUARIO</h4>
+                        </div>
+
 
                         <div class="card-body">
                             <div class="row form-group">
@@ -42,25 +46,24 @@
 
                             <div class="row form-group">
                                 <label for="" class="col-2">Foto</label>
-                                <img src="{{ asset('storage').'/'.$usuario->foto}}" alt="" height="80" width="auto">
-                                <input type="file" name="foto" class="col-md-6">
+                                <input type="file" name="foto" class="fotoFile">
                             </div>
 
 
                             <div class="row form-group">
                                 <label for="" class="col-2">Rol</label>
                                 <select name="rol_id" class="form-control col-md-9" >
-                                    <option value="">--Selecione--</option>
+                                    <option value="" class="text-center"> Elegir Rol... </option>
 
                                     @foreach( $rol as $roles)
-                                        <option value="{{$roles->id_rol}}"> {{$roles->descripcion}}  </option>
+                                        <option value="{{$roles->id_rol}}" class="text-center"> {{$roles->descripcion}}  </option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="row form-group">
-                                <button type="submit" class="btn btn-outline-success col-md-9 offset-2">Modificar</button>
-
+                                <button type="submit" class="btn btn-outline-success col-md-4 offset-2 mr-3">Modificar</button>
+                                <a class="btn btn-outline-danger btn-xs col-md-4" href=" {{ url('/') }}">Cancelar</a>
                             </div>
 
                         </div>
@@ -71,8 +74,6 @@
             </div>
 
         </div>
-
-        <a class="btn btn-outline-info btn-xs mt-5" href=" {{ url('/') }}">&laquo volver</a>
 
     </div>
 @endsection
