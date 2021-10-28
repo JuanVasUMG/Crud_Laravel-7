@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*  RUTAS DE USURAIO */
 //Listado de Usuarios
 Route::get('/', 'UserController@lista');
 //Formulario de Usuarios
@@ -25,3 +26,7 @@ Route::delete('/delete/{id}','UserController@delete')->name('delete');
 Route::get('/editform/{id}','UserController@editform')->name('editform');
 //Edicion de usuarios
 Route::patch('/edit/{id}','UserController@edit')->name('edit');
+
+/*  RUTAS DE ROL  */
+Route::get('/formRol', 'RolController@listaRol');
+Route::delete('/deleteRol/{id}','RolController@deleterol')->name('deleterol');

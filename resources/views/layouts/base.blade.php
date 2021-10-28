@@ -22,7 +22,7 @@
                 <img src="https://umg.edu.gt/assets/umg.png" height="30" class="d-inline-block align-top" alt="Logo UMG">
             </a>
             <a class="navbar-brand" href="{{ url('/') }}">Usuarios</a>
-            <a class="navbar-brand" href="{{ url('/') }}">Rol</a>
+            <a class="navbar-brand" href="{{ url('/formRol') }}">Rol</a>
         </div>
     </nav>
 
