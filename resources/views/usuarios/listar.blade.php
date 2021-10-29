@@ -12,10 +12,18 @@
             <!-- Boton de registro -->
             <a class="btn btn-outline-success mb-3" href="{{url('/form')}}">Agregar usuario</a>
 
-            <!-- Mensaje Flash -->
-            @if(session('usuarioEliminado'))
+            <!-- Mensaje de alerta Usuario Guardado o Modificado -->
+            @if(Session::has('Alerta'))
+                <div class="alert alert-success">
+                    {{Session::get('Alerta')}}
+                </div>
+
+            @endif
+
+            <!-- Mensaje de alerta Usuario Eliminado -->
+            @if(Session::has('Delete'))
                 <div class="alert alert-danger">
-                    {{session('usuarioEliminado')}}
+                    {{Session::get('Delete')}}
                 </div>
             @endif
 

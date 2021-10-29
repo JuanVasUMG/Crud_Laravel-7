@@ -57,7 +57,7 @@ class UserController extends Controller
             'rol_id'=>$validator['rol']
         ]);
 
-        return back()->with('usuarioGuardado','Usuario Guardado');
+        return redirect('/')->with('Alerta', 'Usuario guardado exitosamente');
     }
 
     //Eliminar Usuarios
@@ -68,7 +68,7 @@ class UserController extends Controller
             Usuario::destroy($id);
         }
 
-        return back()->with('usuarioEliminado', 'Usuario Eliminado');
+        return back()->with('Delete', 'Usuario Eliminado exitosamente');
     }
 
     //Formulario Editar Usuarios
@@ -92,7 +92,7 @@ class UserController extends Controller
 
         Usuario::where('id', '=', $id)->update($dataUsuario);
 
-        return back()->with('usuarioModificado','Usuario Modificado');
+        return redirect('/')->with('Alerta', 'Usuario modificado exitosamente');
     }
 
 }
