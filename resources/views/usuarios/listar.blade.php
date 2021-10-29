@@ -4,13 +4,13 @@
 @section('title', 'User List')
 
 @section('content')
-<div class="container mt-3">
+<div class="container ml-5">
     <div class="row justify-content-center">
-        <div class="col-md-10">
-            <h2 class="text-center mb-1">Usuarios Registrados</h2>
+        <div class="col-md-10 ml-5">
+            <h2 class="text-center mt-5">Usuarios Registrados</h2>
 
             <!-- Boton de registro -->
-            <a class="btn btn-outline-success mb-3" href="{{url('/form')}}">Agregar usuario</a>
+            <a class="btn btn-outline-success mb-3" href="{{url('/form')}}"><i class="fas fa-plus-square"></i> Crear usuario</a>
 
             <!-- Mensaje de alerta Usuario Guardado o Modificado -->
             @if(Session::has('Alerta'))

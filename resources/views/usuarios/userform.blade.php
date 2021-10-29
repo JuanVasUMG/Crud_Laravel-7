@@ -3,9 +3,10 @@
 @section('title', 'User Create')
 
 @section('content')
-    <div class="container mt-2">
+    <div class="container ml-5">
         <div class="row justify-content-center">
-            <div class="col-md-7 mt-5">
+            <div class="col-md-7 mt-5 ml-5">
+                <br><br><br>
                 <div class="card">
                     <form action="{{ url ('save') }}" method="POST" enctype="multipart/form-data">
                     @csrf

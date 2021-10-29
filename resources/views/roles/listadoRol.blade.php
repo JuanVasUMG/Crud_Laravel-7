@@ -4,13 +4,13 @@
 @section('title', 'Rol List')
 
 @section('content')
-    <div class="container mt-3">
+    <div class="container ml-5">
         <div class="row justify-content-center">
-            <div class="col-md-10">
-                <h2 class="text-center mb-1">Roles Registrados</h2>
+            <div class="col-md-10 ml-5">
+                <h2 class="text-center mt-5">Roles Registrados</h2>
 
                 <!-- Boton de registro -->
-                <a class="btn btn-outline-success mb-3" href="{{url('/formRol')}}">Crear Rol</a>
+                <a class="btn btn-outline-success mb-3" href="{{url('/formRol')}}"><i class="fas fa-plus-square"></i> Crear Rol</a>
 
                 <!-- Mensaje Flash -->
                 @if(session('usuarioEliminado'))
@@ -22,9 +22,9 @@
                 <table class="table table-bordered table-hover text-center">
                     <thead class="bg-info">
                     <tr>
-                        <th>id</th>
-                        <th>Descripcion</th>
-                        <th>Acciones</th>
+                        <th style="width: 100px">id</th>
+                        <th style="width: 300px">Descripcion</th>
+                        <th style="width: 200px">Acciones</th>
                     </tr>
                     </thead>
 

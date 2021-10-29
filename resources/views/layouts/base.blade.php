@@ -15,7 +15,7 @@
     <title>Crud Laravel - @yield('title')</title>
 </head>
 <body>
-    <!-- Crea una NavBar -->
+    <!-- Crea una NavBar
     <nav class="navbar navbar-dark bg-primary   ">
         <div class="btn-group">
             <a  href="{{ url('/') }}" class="navbar-brand mr-3">
@@ -24,9 +24,43 @@
             <a class="navbar-brand" href="{{ url('/') }}">Usuarios</a>
             <a class="navbar-brand" href="{{ url('/formRol') }}">Rol</a>
         </div>
-    </nav>
+    </nav>-->
+    <style>
+        .listado {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            height: 635px;
+            position: absolute;
+        }
+
+        .lista .link {
+            display: block;
+            color: #000;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        /* Change the link color on hover */
+        .lista .link:hover {
+            background-color: #555;
+            color: white;
+        }
+    </style>
+
+    <ul class="listado bg-secondary">
+        <br>
+        <a  href="{{ url('/') }}" class="ml-5 text-center">
+            <img src="https://umg.edu.gt/assets/umg.png" height="90" class="d-inline-block align-center" alt="Logo UMG">
+        </a>
+        <br><br>
+        <li class="lista"><a class="link" href="{{ url('/') }}"><i class="fas fa-user"></i> Usuarios</a></li>
+        <li class="lista"><a class="link" href="{{ url('/formRol') }}"><i class="fas fa-user-tag"></i> Rol</a></li>
+    </ul>
 
     <!-- Archivos Blade -->
+
     <div class="container">
         @yield('content')
     </div>

@@ -3,9 +3,10 @@
 @section('title', 'User Update')
 
 @section('content')
-    <div class="container mt-2">
+    <div class="container ml-5">
         <div class="row justify-content-center">
-            <div class="col-md-7 mt-5">
+            <div class="col-md-7 mt-5 ml-5">
+                <br><br>
                 <div class="card">
                     <form action="{{ route('edit', $usuario->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf @method('PATCH')
