@@ -6,18 +6,6 @@
     <div class="container mt-2">
         <div class="row justify-content-center">
             <div class="col-md-7 mt-5">
-
-            <!--Validacion de errores-->
-                @if($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>{{$error}}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
                 <div class="card">
                     <form action="{{ route('edit', $usuario->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf @method('PATCH')
@@ -25,7 +13,6 @@
                             <img src="{{ asset('storage').'/'.$usuario->foto}}" height="80" style="border-radius: 50%">
                             <h4>MODIFICAR USUARIO</h4>
                         </div>
-
 
                         <div class="card-body">
                             <div class="row form-group">

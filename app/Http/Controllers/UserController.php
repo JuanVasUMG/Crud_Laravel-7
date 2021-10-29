@@ -20,7 +20,7 @@ class UserController extends Controller
             // Toma de referencial el rol_id de usuairos para traer descripcion de rol
             ->join('rol', 'usuarios.rol_id', '=', 'rol.id_rol')
             ->select('usuarios.*', 'rol.descripcion')
-            ->paginate(5);
+            ->paginate(3);
 
 
         return view('usuarios.listar', compact('users'));
@@ -37,12 +37,18 @@ class UserController extends Controller
     //Guardar Usuarios
     public function save(Request $request){
         /* Validamos los campos */
-        $validator = $this->validate($request, [
+        $validator = [
             'nombre'=> 'required|string|max:75',
             'email'=> 'required|string|max:45|email|unique:usuarios',
-            'foto' => 'required|',
-            'rol'=> 'required'
-        ]);
+            'foto' => 'required|max:10000|mimes:jpeg,png,jpg',
+            'rol'=> 'required|max:100'
+        ];
+
+        /*Mensaje de Validacion de datos del usuario*/
+        $Mensaje = ["required"=>'El campo :attribute es requerido'];
+        $this->validate($request,$validator,$Mensaje);
+
+
 
         /*Recolecion de la foto de Usuario*/
         if($request->hasFile('foto')){
