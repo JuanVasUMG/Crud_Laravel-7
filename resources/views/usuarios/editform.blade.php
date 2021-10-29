@@ -28,7 +28,7 @@
                     <form action="{{ route('edit', $usuario->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf @method('PATCH')
                         <div class="card-header text-center text-white bg-info">
-                            <img src="{{ asset('storage').'/'.$usuario->foto}}" alt="" height="80" style="border-radius: 50%">
+                            <img src="{{ asset('storage').'/'.$usuario->foto}}" height="80" style="border-radius: 50%">
                             <h4>MODIFICAR USUARIO</h4>
                         </div>
 
@@ -46,7 +46,10 @@
 
                             <div class="row form-group">
                                 <label for="" class="col-2">Foto</label>
-                                <input type="file" name="foto" class="fotoFile">
+                                <div class="custom-file col-md-9">
+                                    <input type="file" name="foto" class="custom-file-input" id="customFile">
+                                    <label class="custom-file-label text-center" for="customFile"> Subir Foto </label>
+                                </div>
                             </div>
 
 

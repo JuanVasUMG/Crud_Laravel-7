@@ -44,7 +44,10 @@
 
                             <div class="row form-group">
                                 <label for="" class="col-2">Foto</label>
-                                <input type="file" name="foto" class="fotoFile">
+                                <div class="custom-file col-md-9">
+                                    <input type="file" name="foto" class="custom-file-input" id="customFile">
+                                    <label class="custom-file-label" for="customFile"> Subir Foto </label>
+                                </div>
                             </div>
 
                             <div class="row form-group">

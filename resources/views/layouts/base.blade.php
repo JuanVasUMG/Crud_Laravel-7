@@ -26,28 +26,6 @@
         </div>
     </nav>
 
-    <style>
-        .fotoFile{
-            background-color: white;
-            border-radius: 50px;
-            width: 350px;
-            outline: none;
-            border-color: black;
-        }
-
-        ::-webkit-file-upload-button{
-            color: white;
-            background: #206a5d;
-            padding: 10px;
-            border: none;
-            border-radius: 50px;
-            outline: none;
-        }
-
-        ::-webkit-file-upload-button:hover{
-            background: #438e5e;
-        }
-    </style>
     <!-- Archivos Blade -->
     <div class="container">
         @yield('content')
