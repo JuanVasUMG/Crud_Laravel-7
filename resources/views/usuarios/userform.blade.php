@@ -6,12 +6,6 @@
     <div class="container ml-5">
         <div class="row justify-content-center">
             <div class="col-md-7 mt-5 ml-5">
-                <!-- Mensaje Flash -->
-                @if(session('usuarioGuardado'))
-                    <div class="alert alert-success">
-                        {{ session('usuarioGuardado') }}
-                    </div>
-                @endif
 
             <!-- Validacion Errores-->
                 @if($errors->any())

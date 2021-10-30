@@ -14,7 +14,7 @@
 
     <title>Crud Laravel - @yield('title')</title>
 </head>
-<body>
+<body style="background-color: #AED6F1">
     <!-- Estilos NavBar -->
     <style>
         .listado {
@@ -23,6 +23,8 @@
             padding: 0;
             width: 200px;
             height: 635px;
+            background-color: #B2BABB;
+            border: black ;
             position: absolute;
         }
 
@@ -41,14 +43,14 @@
     </style>
 
     <!-- Creación de NavBar -->
-    <ul class="listado bg-secondary">
+    <ul class="listado">
         <br>
         <a  href="{{ url('/') }}" class="ml-5 text-center">
             <img src="https://umg.edu.gt/assets/umg.png" height="90" class="d-inline-block align-center" alt="Logo UMG">
         </a>
         <br><br>
         <li class="lista"><a class="link" href="{{ url('/') }}"><i class="fas fa-user"></i> Usuarios</a></li>
-        <li class="lista"><a class="link" href="{{ url('/formRol') }}"><i class="fas fa-user-tag"></i> Rol</a></li>
+        <li class="lista"><a class="link" href="{{ url('/listRol') }}"><i class="fas fa-user-tag"></i> Rol</a></li>
     </ul>
 
     <!-- Archivos Blade -->

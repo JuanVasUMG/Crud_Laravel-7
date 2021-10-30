@@ -12,14 +12,7 @@
                 <!-- Boton de registro -->
                 <a class="btn btn-outline-success mb-3" href="{{url('/formRol')}}"><i class="fas fa-plus-square"></i> Crear Rol</a>
 
-                <!-- Mensaje Flash -->
-                @if(session('usuarioEliminado'))
-                    <div class="alert alert-danger">
-                        {{session('usuarioEliminado')}}
-                    </div>
-                @endif
-
-                <table class="table table-bordered table-hover text-center">
+                <table class="table table-light table-bordered table-hover text-center">
                     <thead class="bg-info">
                     <tr>
                         <th style="width: 100px">id</th>

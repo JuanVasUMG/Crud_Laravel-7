@@ -12,7 +12,7 @@
             <!-- Boton de registro -->
             <a class="btn btn-outline-success mb-3" href="{{url('/form')}}"><i class="fas fa-plus-square"></i> Crear usuario</a>
 
-            <table class="table table-bordered table-hover text-center">
+            <table class="table table-light table-bordered table-hover text-center">
                 <thead class="bg-info">
                 <tr>
                     <th>Foto</th>
