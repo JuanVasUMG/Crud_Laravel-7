@@ -54,7 +54,8 @@ class UserController extends Controller
             'foto' =>$validator['foto'],
             'rol_id'=>$validator['rol']
         ]);
-        return back()->with('usuarioGuardado','Usuario Guardado');
+
+        return redirect('/')->with('guardar', 'ok');
     }
 
     //Eliminar Usuarios
@@ -89,7 +90,7 @@ class UserController extends Controller
 
         Usuario::where('id', '=', $id)->update($dataUsuario);
 
-        return redirect('/')->with('Alerta', 'Usuario modificado exitosamente');
+        return redirect('/')->with('editar', 'ok');
     }
 
 }

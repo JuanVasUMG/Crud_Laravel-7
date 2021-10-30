@@ -12,14 +12,6 @@
             <!-- Boton de registro -->
             <a class="btn btn-outline-success mb-3" href="{{url('/form')}}"><i class="fas fa-plus-square"></i> Crear usuario</a>
 
-            <!-- Mensaje de alerta Usuario Guardado o Modificado -->
-            @if(Session::has('Alerta'))
-                <div class="alert alert-success">
-                    {{Session::get('Alerta')}}
-                </div>
-
-            @endif
-
             <table class="table table-bordered table-hover text-center">
                 <thead class="bg-info">
                 <tr>
@@ -71,6 +63,26 @@
 <!-- Alert Eliminar Usuario SweetAlert2 -->
 @section('js')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if(session('guardar') == 'ok')
+        <script>
+            Swal.fire(
+                '¡Guardado!',
+                'El Usuario se guardo con exito',
+                'success'
+            )
+        </script>
+    @endif
+
+    @if(session('editar') == 'ok')
+        <script>
+            Swal.fire(
+                '¡Modificado!',
+                'El Usuario se modifico con exito',
+                'success'
+            )
+        </script>
+    @endif
 
     @if(session('eliminar') == 'ok')
         <script>
