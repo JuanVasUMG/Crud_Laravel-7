@@ -10,14 +10,13 @@
                 <h2 class="text-center mt-5">Roles Registrados</h2>
 
                 <!-- Boton de registro -->
-                <a class="btn btn-outline-success mb-3" href="{{url('/formRol')}}"><i class="fas fa-plus-square"></i> Crear Rol</a>
+                <a class="btn btn-outline-success mb-3" href="{{url('/formRol')}}" style="margin-left: 170px"><i class="fas fa-plus-square"></i> Crear Rol</a>
 
-                <table class="table table-light table-bordered table-hover text-center">
+                <table class="table table-light table-bordered table-hover text-center col-md-8" style="margin-left: 170px">
                     <thead class="bg-info">
                     <tr>
                         <th style="width: 100px">id</th>
                         <th style="width: 300px">Descripcion</th>
-                        <th style="width: 200px">Acciones</th>
                     </tr>
                     </thead>
 
@@ -26,20 +25,6 @@
                         <tr>
                             <td>{{$rol->id_rol}}</td>
                             <td>{{$rol->descripcion}}</td>
-                            <td>
-                                <div class="btn-group">
-                                    <a href="">
-                                        <i class="fas fa-pencil-alt btn btn-outline-primary mb-2 mr-2"></i>
-                                    </a>
-
-                                    <form action="" method="POST">
-                                        @csrf @method('DELETE')
-                                        <button type="submit" onclick="return confirm('¿Esta seguro de Eliminar Usurio Permanentemente?')" class="btn btn-outline-danger btn-sm">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
                         </tr>
                     @endforeach
 
@@ -50,4 +35,20 @@
             </div>
         </div>
     </div>
+@endsection
+
+<!-- SweetAlert2 -->
+@section('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if(session('guardar') == 'ok')
+        <script>
+            Swal.fire(
+                '¡Guardado!',
+                'El Rol se guardo con exito',
+                'success'
+            )
+        </script>
+    @endif
+
 @endsection

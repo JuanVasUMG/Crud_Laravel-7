@@ -60,17 +60,27 @@
 </div>
 @endsection
 
-<!-- Alert Eliminar Usuario SweetAlert2 -->
+<!-- SweetAlert2 -->
 @section('js')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @if(session('guardar') == 'ok')
         <script>
-            Swal.fire(
-                '¡Guardado!',
-                'El Usuario se guardo con exito',
-                'success'
-            )
+            const { value: descripcion } = await Swal.fire({
+                title: 'Crear Rol',
+                input: 'text',
+                inputLabel: 'Descripcion:',
+                inputName: 'descripcion',
+                inputPlaceholder: ''
+            })
+
+            if (descripcion) {
+                Swal.fire(
+                    '¡Guardado!',
+                    'El Rol se guardo con exito',
+                    'success'
+                )
+            }
         </script>
     @endif
 

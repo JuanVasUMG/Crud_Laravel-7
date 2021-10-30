@@ -7,17 +7,29 @@ use Illuminate\Http\Request;
 
 class RolController extends Controller
 {
-    //Listado de Rol
-    public function listaRol(){
-        $datarol['roles'] = Rol::paginate(15);
+    //Formulario de Rol
+    public function formRol(){
 
-        return view('roles.listadoRol', $datarol);
+        return view('roles.createRol');
     }
 
-    //Eliminar Rol
-    public function deleterol($id){
-        Rol::destroy($id);
+    public function saveRol(Request $request){
 
-        return back()->with('rolEliminado', 'Rol Eliminado');
+        $validator = $this->validate($request, [
+            'descripcion'=> 'required|string|max:45',
+        ]);
+
+        Rol::create([
+            'descripcion'=>$validator['descripcion']
+        ]);
+
+        return redirect('/listRol')->with('guardar', 'ok');
+    }
+
+    //Listado de Rol
+    public function listaRol(){
+        $datarol['roles'] = Rol::paginate(7);
+
+        return view('roles.listadoRol', $datarol);
     }
 }

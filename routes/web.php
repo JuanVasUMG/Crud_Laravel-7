@@ -28,5 +28,10 @@ Route::get('/editform/{id}','UserController@editform')->name('editform');
 Route::patch('/edit/{id}','UserController@edit')->name('edit');
 
 /*  RUTAS DE ROL  */
+//Listado de Roles
 Route::get('/listRol', 'RolController@listaRol');
-Route::delete('/deleteRol/{id}','RolController@deleterol')->name('deleterol');
+//Formulario de Roles
+Route::get('formRol', 'RolController@formRol');
+//Create Rol
+Route::post('/saveRol','RolController@saveRol')->name('saveRol');
+
