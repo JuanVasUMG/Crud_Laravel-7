@@ -15,16 +15,7 @@
     <title>Crud Laravel - @yield('title')</title>
 </head>
 <body>
-    <!-- Crea una NavBar
-    <nav class="navbar navbar-dark bg-primary   ">
-        <div class="btn-group">
-            <a  href="{{ url('/') }}" class="navbar-brand mr-3">
-                <img src="https://umg.edu.gt/assets/umg.png" height="30" class="d-inline-block align-top" alt="Logo UMG">
-            </a>
-            <a class="navbar-brand" href="{{ url('/') }}">Usuarios</a>
-            <a class="navbar-brand" href="{{ url('/formRol') }}">Rol</a>
-        </div>
-    </nav>-->
+    <!-- Estilos NavBar -->
     <style>
         .listado {
             list-style-type: none;
@@ -49,6 +40,7 @@
         }
     </style>
 
+    <!-- Creación de NavBar -->
     <ul class="listado bg-secondary">
         <br>
         <a  href="{{ url('/') }}" class="ml-5 text-center">
@@ -64,6 +56,8 @@
     <div class="container">
         @yield('content')
     </div>
+
+    @yield('js')
 
 </body>
 </html>

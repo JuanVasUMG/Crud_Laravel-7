@@ -37,24 +37,16 @@ class UserController extends Controller
     //Guardar Usuarios
     public function save(Request $request){
         /* Validamos los campos */
-        $validator = [
+        $validator = $this->validate($request, [
             'nombre'=> 'required|string|max:75',
             'email'=> 'required|string|max:45|email|unique:usuarios',
-            'foto' => 'required|max:10000|mimes:jpeg,png,jpg',
-            'rol'=> 'required|max:100'
-        ];
-
-        /*Mensaje de Validacion de datos del usuario*/
-        $Mensaje = ["required"=>'El campo :attribute es requerido'];
-        $this->validate($request,$validator,$Mensaje);
-
-
-
+            'foto' => 'required|',
+            'rol'=> 'required'
+        ]);
         /*Recolecion de la foto de Usuario*/
         if($request->hasFile('foto')){
             $validator['foto'] = $request-> file('foto')->store('uploads','public');
         }
-
         /* Guardamos en la Base de datos */
         Usuario::create([
             'nombre'=>$validator['nombre'],
@@ -62,8 +54,7 @@ class UserController extends Controller
             'foto' =>$validator['foto'],
             'rol_id'=>$validator['rol']
         ]);
-
-        return redirect('/')->with('Alerta', 'Usuario guardado exitosamente');
+        return back()->with('usuarioGuardado','Usuario Guardado');
     }
 
     //Eliminar Usuarios
@@ -74,7 +65,7 @@ class UserController extends Controller
             Usuario::destroy($id);
         }
 
-        return back()->with('Delete', 'Usuario Eliminado exitosamente');
+        return back()->with('eliminar', 'ok');
     }
 
     //Formulario Editar Usuarios

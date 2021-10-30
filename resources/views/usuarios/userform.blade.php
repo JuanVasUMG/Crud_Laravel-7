@@ -6,10 +6,27 @@
     <div class="container ml-5">
         <div class="row justify-content-center">
             <div class="col-md-7 mt-5 ml-5">
+                <!-- Mensaje Flash -->
+                @if(session('usuarioGuardado'))
+                    <div class="alert alert-success">
+                        {{ session('usuarioGuardado') }}
+                    </div>
+                @endif
+
+            <!-- Validacion Errores-->
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <br><br><br>
                 <div class="card">
                     <form action="{{ url ('save') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+                        @csrf
                         <div class="card-header text-center text-white bg-info">
                             <h4>AGREGAR USUARIO</h4>
                         </div>
@@ -17,37 +34,31 @@
                         <div class="card-body">
                             <div class="row form-group">
                                 <label for="" class="col-2">Nombre</label>
-                                <input type="text" name="nombre" class="form-control col-md-9 {{$errors->has('nombre')?'is-invalid':''}}" value="{{ isset($users->nombre)?$users->nombre:old('nombre') }}">
-                                <!-- Mensaje de error -->
-                                {!! $errors->first('nombre','<div class="invalid-feedback text-center">:message</div>') !!}
+                                <input type="text" name="nombre" class="form-control col-md-9">
                             </div>
 
                             <div class="row form-group">
                                 <label for="" class="col-2">Email</label>
-                                <input type="text" name="email" class="form-control col-md-9 {{$errors->has('email')?'is-invalid':''}}" value="{{ isset($users->email)?$users->email:old('email') }}">
-                                <!-- Mensaje de error -->
-                                {!! $errors->first('email','<div class="invalid-feedback text-center">:message</div>') !!}
+                                <input type="text" name="email" class="form-control col-md-9">
                             </div>
 
                             <div class="row form-group">
                                 <label for="" class="col-2">Foto</label>
                                 <div class="custom-file col-md-9">
-                                    <input type="file" name="foto" class="custom-file-input {{$errors->has('foto')?'is-invalid':''}}" id="customFile">
-                                    <label class="custom-file-label text-center" for="customFile"> Subir Foto </label>
+                                    <input type="file" name="foto" class="custom-file-input" id="customFile">
+                                    <label class="custom-file-label" for="customFile"> Subir Foto </label>
                                 </div>
                             </div>
 
                             <div class="row form-group">
                                 <label for="" class="col-2">Rol</label>
-                                <select name="rol" class="form-control col-md-9 {{$errors->has('foto')?'is-invalid':''}}">
-                                    <option value="{{ isset($users->rol)?$users->rol:old('rol') }}" class="text-center"> Elegir Rol... </option>
+                                <select name="rol" class="form-control col-md-9" >
+                                    <option value="" class="text-center"> Elegir Rol... </option>
 
                                     @foreach( $rol as $roles)
                                         <option value="{{$roles->id_rol}}" class="text-center"> {{$roles->descripcion}}  </option>
                                     @endforeach
                                 </select>
-                                <!-- Mensaje de error -->
-                                {!! $errors->first('rol','<div class="invalid-feedback text-center">:message</div>') !!}
                             </div>
 
                             <div class="row form-group">

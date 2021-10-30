@@ -20,13 +20,6 @@
 
             @endif
 
-            <!-- Mensaje de alerta Usuario Eliminado -->
-            @if(Session::has('Delete'))
-                <div class="alert alert-danger">
-                    {{Session::get('Delete')}}
-                </div>
-            @endif
-
             <table class="table table-bordered table-hover text-center">
                 <thead class="bg-info">
                 <tr>
@@ -53,9 +46,9 @@
                                     <i class="fas fa-pencil-alt btn btn-outline-primary mb-2 mr-2"></i>
                                 </a>
 
-                                <form action="{{ route('delete', $user->id) }}" method="POST">
+                                <form action="{{ route('delete', $user->id) }}" method="POST" class="formulario-eliminar">
                                     @csrf @method('DELETE')
-                                    <button type="submit" onclick="return confirm('¿Esta seguro de Eliminar Usurio Permanentemente?')" class="btn btn-outline-danger btn-sm">
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </form>
@@ -75,3 +68,42 @@
 </div>
 @endsection
 
+<!-- Alert Eliminar Usuario SweetAlert2 -->
+@section('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if(session('eliminar') == 'ok')
+        <script>
+            Swal.fire(
+                '¡Eliminado!',
+                'El Usuario se elimino con exito.',
+                'success'
+            )
+        </script>
+    @endif
+
+    <script>
+        $('.formulario-eliminar').submit(function(e){
+            e.preventDefault();
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "El Usuario se eliminara definitivamente",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    /*Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )*/
+                    this.submit();
+                }
+            })
+        });
+    </script>
+@endsection
